@@ -81,11 +81,14 @@
     $app->patch("/clients/{id}", function($id) use ($app) {
         $client_name = $_POST['name'];
         $phone_number = $_POST['phone_number'];
-        $stylist_id = $_POST['stylist_id'];
         $this_client = Client::find($id);
-        $this_client->update($client_name, $phone_number);
-        $stylist = Stylist::find($this_client->getStylistId());
         $blank_form = array();
+        if (!$client_name || !$phone_number) {
+            array_push($blank_form, "empty");
+        } else {
+            $this_client->update($client_name, $phone_number);
+        }
+        $stylist = Stylist::find($this_client->getStylistId());
 
         return $app['twig']->render('stylist.html.twig', array('clients' => Client::getAll(), 'client' => $this_client, 'stylist' => $stylist, 'blank_form' => $blank_form));
     });
@@ -104,6 +107,18 @@
         $stylist = Stylist::find($this_client->getStylistId());
 
         return $app['twig']->render('client.html.twig', array('client' => $this_client, 'stylist' => $stylist));
+    });
+
+    $app->get("/clients/{id}/edit", function($id) use ($app) {
+        $this_client = Client::find($id);
+
+        return $app['twig']->render('client_edit.html.twig', array('client' => $this_client));
+    });
+
+    $app->post("/clients/{id}/edit", function($id) use ($app) {
+        $this_client = Client::find($id);
+
+        return $app['twig']->render('client_edit.html.twig', array('client' => $this_client));
     });
 
     return $app;

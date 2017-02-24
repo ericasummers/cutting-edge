@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    {% include '/components/head.html.twig' %}
+    <body>
+        {% include '/components/header-banner.html.twig' %}
+
+        <div class="client-content">
+            <h1>{{ client.getName }}</h1>
+
+            <p>Update client information:</p>
+            <form method="post" action="/clients/{{ client.getId }}">
+                <input type="hidden" name="_method" value="patch">
+
+                <label for="name">Client Name:</label>
+                <input type="text" name="name" value="{{ client.getName }}">
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" name="phone_number" value="{{ client.getPhoneNumber }}">
+
+                <button class="btn btn-info" type="submit"><i class="fa fa-plus-square" aria-hidden="true"></i> Update!</button>
+            </form>
+
+            <br><br>
+            <p><a href="/stylists/{{ client.getStylistId }}"><i class="fa fa-home" aria-hidden="true"></i> Return to stylist page</a></p>
+            <br>
+
+            <p><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a></p>
+
+        </div>
+        {% include '/components/footer.html.twig' %}
+    </body>
+</html>
