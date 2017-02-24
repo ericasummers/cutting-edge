@@ -39,12 +39,22 @@
 
         function save()
         {
-
+            $GLOBALS['DB']->exec("INSERT INTO stylists (name, specialty) VALUES ('{$this->getName()}', '{$this->getSpecialty()}');");
+            $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
         static function getAll()
         {
-            
+            $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists ORDER BY name;");
+            $all_stylists = array();
+            foreach($returned_stylists as $stylist) {
+                $name = $stylist['name'];
+                $specialty = $stylist['specialty'];
+                $id = $stylist['id'];
+                $new_stylist = new Stylist($name, $specialty, $id);
+                array_push($all_stylists, $new_stylist);
+            }
+            return $all_stylists;
         }
     }
 

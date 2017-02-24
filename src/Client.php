@@ -46,12 +46,23 @@
 
         function save()
         {
-
+            $GLOBALS['DB']->exec("INSERT INTO clients (name, phone_number, stylist_id) VALUES ('{$this->getName()}', {$this->getPhoneNumber()}, {$this->getStylistId()});");
+            $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
         static function getAll()
         {
-            
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients ORDER BY name;");
+            $all_clients = array();
+            foreach($returned_clients as $client) {
+                $name = $client['name'];
+                $phone_number = $client['phone_number'];
+                $stylist_id = $client['stylist_id'];
+                $id = $client['id'];
+                $new_client = new Client($name, $phone_number, $stylist_id, $id);
+                array_push($all_clients, $new_client);
+            }
+            return $all_clients;
         }
     }
 
