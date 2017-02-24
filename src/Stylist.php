@@ -8,7 +8,7 @@
         function __construct($new_name, $new_specialty, $id = null)
         {
             $this->name = $new_name;
-            $this->specialty = $specialty;
+            $this->specialty = $new_specialty;
             $this->id = $id;
         }
 
