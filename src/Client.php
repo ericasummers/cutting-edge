@@ -51,13 +51,15 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO clients (name, phone_number, stylist_id) VALUES ('{$this->getName()}', {$this->getPhoneNumber()}, {$this->getStylistId()});");
+            $GLOBALS['DB']->exec("INSERT INTO clients (name, phone_number, stylist_id) VALUES ('{$this->getName()}', '{$this->getPhoneNumber()}', {$this->getStylistId()});");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-        function update()
+        function update($new_name, $new_phone_number)
         {
-            
+            $GLOBALS['DB']->exec("UPDATE clients SET name = '{$new_name}', phone_number = '{$new_phone_number}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
+            $this->setPhoneNumber($new_phone_number);
         }
 
         static function getAll()

@@ -24,7 +24,7 @@
 
         function setName($new_name)
         {
-            $this->id = (string) $new_name;
+            $this->name = (string) $new_name;
         }
 
         function getSpecialty()
@@ -43,9 +43,11 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-        function update()
+        function update($new_name, $new_specialty)
         {
-            
+            $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$new_name}', specialty = '{$new_specialty}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
+            $this->setSpecialty($new_specialty);
         }
 
         static function getAll()
