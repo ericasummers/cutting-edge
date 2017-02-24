@@ -98,6 +98,11 @@
             }
             return $found_client;
         }
+
+        static function deleteByStylist()
+        {
+            
+        }
     }
 
 
