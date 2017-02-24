@@ -106,8 +106,12 @@
     });
 
     $app->delete("/delete-all-clients", function() use ($app) {
+        $stylist_id = $_POST['stylist_id'];
+        $stylist = Stylist::find($stylist_id);
+        Client::deleteByStylist($stylist_id);
+        $blank_form = array();
 
-        return $app['twig']->render('stylist.html.twig', array('clients' => $stylist->getClients(), 'stylist' => 'blank_form' => $blank_form));
+        return $app['twig']->render('stylist.html.twig', array('clients' => $stylist->getClients(), 'stylist' => $stylist, 'blank_form' => $blank_form));
     });
 
     $app->get("/clients/{id}", function($id) use ($app) {
