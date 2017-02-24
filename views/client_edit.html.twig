@@ -12,9 +12,9 @@
                 <input type="hidden" name="_method" value="patch">
 
                 <label for="name">Client Name:</label>
-                <input type="text" name="name" value="{{ client.getName }}">
+                <input type="text" name="name" value="{{ client.getName }}" required>
                 <label for="phone_number">Phone Number:</label>
-                <input type="text" name="phone_number" value="{{ client.getPhoneNumber }}">
+                <input type="text" name="phone_number" value="{{ client.getPhoneNumber }}" required>
 
                 <button class="btn btn-info" type="submit"><i class="fa fa-plus-square" aria-hidden="true"></i> Update!</button>
             </form>

@@ -12,9 +12,9 @@
                 <input type="hidden" name="_method" value="patch">
 
                 <label for="name">Stylist Name:</label>
-                <input type="text" name="name" value="{{ stylist.getName }}">
+                <input type="text" name="name" value="{{ stylist.getName }}" required>
                 <label for="specialty">Specialty:</label>
-                <input type="text" name="specialty" value="{{ stylist.getSpecialty }}">
+                <input type="text" name="specialty" value="{{ stylist.getSpecialty }}" required>
 
                 <button class="btn btn-info" type="submit"><i class="fa fa-plus-square" aria-hidden="true"></i> Update!</button>
             </form>
