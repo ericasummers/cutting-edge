@@ -1,23 +1,30 @@
 body {
     background-color: #444141;
+    font-family: 'Lato', sans-serif;
+    color: #FFFFFF;
 }
 
 .header-banner {
     background-color: #BB2E27;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 40px;
+    color: #444141;
     width: 100%;
     display: block;
     top: 0;
     padding: 2px;
 }
 
-.header-banner h1 {
+.header-banner a {
     color: #444141;
 }
 
-#home-content {
+.header-banner a:hover {
+    text-decoration: none;
     color: #FFFFFF;
 }
 
-#home-content h1 {
+.header-banner a:active {
+    text-decoration: none;
     color: #FFFFFF;
 }
