@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    {% include '/components/head.html.twig' %}
+    <body>
+        {% include '/components/header-banner.html.twig' %}
+            <h1>Cutting Edge Hair Salon Stylists</h1>
+
+            <p>Add a stylist to our list!</p>
+            <form method="post" action="/add-stylist">
+                <label for="name">Stylist Name:</label>
+                <input type="text" name="name" placeholder="Stylist Name">
+                <label for="specialty">Their Specialty:</label>
+                <input type="text" name="specialty" placeholder="cuts, perms, color">
+
+                <button class="btn btn-info" type="submit"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Stylist</button>
+            </form>
+
+                {% if blank_form is not empty %}
+                    <p>Please complete form with a name and specialty and resubmit!</p>
+                    <br><br>
+                    <p class="home-link"><a href="/home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></p>
+                {% else %}
+
+                    {% if stylists is not empty %}
+                        <ul>
+                        {% for stylist in stylists %}
+                            <li>
+                                <a href="/stylists/{{ stylist.getID }}">{{stylist.getName}}</a>
+                                    <form action="/stylists/{{stylist.getId}}/edit" method="post">
+                                        <button type="submit" class="btn btn-success"><i class="fa fa-pencil-square" aria-hidden="true"></i> Update</button>
+                                    </form>
+                                    <form action="/stylists/{{stylist.getId}}" method="post">
+                                        <input type="hidden" name="_method" value="delete">
+                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                    </form>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                        {% else %}
+                            <p> There are no stylists yet! </p>
+                    {% endif %}
+                {% endif %}
+
+        {% include '/components/footer.html.twig' %}
+    </body>
+</html>
