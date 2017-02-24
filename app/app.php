@@ -36,6 +36,24 @@
         return $app['twig']->render('home.html.twig', array('stylists' => Stylist::getAll(), 'blank_form' => $blank_form));
     });
 
+    $app->patch("/stylists/{id}", function($id) use ($app) {
+        $name = $_POST['name'];
+        $specialty = $_POST['specialty'];
+        $this_stylist->find($id);
+        $this_stylist->update($name, $specialty);
+        $blank_form = array();
+
+        return $app['twig']->render('home.html.twig', array('stylists' => Stylist::getAll(), 'blank_form' => $blank_form, 'stylist' => $this_stylist));
+    });
+
+    $app->delete("/stylists/{id}", function($id) use ($app) {
+        $this_stylist = Stylist::find($id);
+        $this_stylist->delete();
+        $blank_form = array();
+
+        return $app['twig']->render('home.html.twig', array('stylists' => Stylist::getAll(), 'blank_form' => $blank_form));
+    });
+
     return $app;
 
 ?>
