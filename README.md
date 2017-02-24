@@ -43,7 +43,7 @@ _This web page allows a user to input a new stylist, view a list of current styl
 | "CREATE DATABASE hair_salon_test;"|Creates hair salon test database|
 |"USE hair_salon;" and "USE hair_salon_test"|Attaches action to that database|
 |"CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR (255), specialty VARCHAR (255));"|Creates table within selected database with specified column types|
-|"CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR (255), phone_number INT, stylist_id INT);"|Creates table within selected database with specified column types|
+|"CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR (255), phone_number VARCHAR (20), stylist_id INT);"|Creates table within selected database with specified column types|
 |"SHOW TABLES;"|Displays tables contained within selected database|
 |"SELECT * FROM stylists;"|Queries and displays all entries contained within a table|
 |"SELECT * FROM clients ORDER BY name;"|Queries and displays all entries contained within a table and orders alphabetically by column selected|
