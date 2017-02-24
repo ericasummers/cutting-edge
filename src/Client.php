@@ -62,6 +62,11 @@
             $this->setPhoneNumber($new_phone_number);
         }
 
+        function delete()
+        {
+            
+        }
+
         static function getAll()
         {
             $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients ORDER BY name;");

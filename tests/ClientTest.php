@@ -86,6 +86,25 @@
             $this->assertEquals("Jenny Wild-Hair", $new_client->getName());
         }
 
+        function test_delete()
+        {
+            $name = "Jenny Crazy-Hair";
+            $phone_number = '5035567890';
+            $stylist_id = '1';
+            $new_client = new Client($name, $phone_number, $stylist_id);
+            $new_client->save();
+
+            $name2 = "Max Messy";
+            $phone_number2 = '5031212121';
+            $stylist_id2 = '2';
+            $new_client2 = new Client($name2, $phone_number2, $stylist_id2);
+            $new_client2->save();
+
+            $new_client->delete();
+
+            $this->assertEquals([$new_client2], Client::getAll());
+        }
+
     }
 
 

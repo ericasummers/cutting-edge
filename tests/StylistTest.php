@@ -80,6 +80,23 @@
             $this->assertEquals("Betsy Brows", $new_stylist->getName());
         }
 
+        function test_delete()
+        {
+            $name = "Bobby Brows";
+            $specialty = "bowl cuts";
+            $new_stylist = new Stylist($name, $specialty);
+            $new_stylist->save();
+
+            $name2 = "Pamela Perm";
+            $specialty2 = "perms and curls";
+            $new_stylist2 = new Stylist($name2, $specialty2);
+            $new_stylist2->save();
+
+            $new_stylist->delete();
+
+            $this->assertEquals([$new_stylist2], Stylist::getAll());
+        }
+
     }
 
 

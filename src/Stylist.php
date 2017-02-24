@@ -50,6 +50,11 @@
             $this->setSpecialty($new_specialty);
         }
 
+        function delete()
+        {
+            
+        }
+
         static function getAll()
         {
             $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists ORDER BY name;");
