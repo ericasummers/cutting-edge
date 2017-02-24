@@ -99,9 +99,9 @@
             return $found_client;
         }
 
-        static function deleteByStylist()
+        static function deleteByStylist($stylist_id)
         {
-            
+            $GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$stylist_id};");
         }
     }
 
