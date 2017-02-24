@@ -19,8 +19,8 @@ _This web page allows a user to input a new stylist, view a list of current styl
 3. To run tests enter `composer test` in terminal.
 4. Create a local server in the /web directory within the project folder using the command: php -S localhost:8000 (assuming you are using a mac), or php -S localhost:8888 (if using windows).
 5. Open the directory http://localhost:8000/ (if on a mac) or http://localhost:8888/ (if on windows pc) in any standard web browser.
-6. Open phpMyAdmin and import the database zip files named hair_salon.sql.zip and hair_salon_test.sql.zip located in the project folder to import the databases needed.
-7. Start server with MAMP and make sure your mySQL server is set to 3306.
+6. Start server with MAMP and make sure your mySQL server is set to 3306.
+7. Open phpMyAdmin and import the database zip files named hair_salon.sql.zip and hair_salon_test.sql.zip located in the project folder to import the databases needed.
 
 ## Specifications
 
@@ -32,6 +32,7 @@ _This web page allows a user to input a new stylist, view a list of current styl
 |A user enters a new client|Enter "Max Messy, 503-121-2121"|Stylist page updates with "Max Messy" listed, database saves new entry in table|
 |A user clicks "Delete" on button for stylist or client|Click "Delete" on stylists or clients button|Page reloads with selected entry removed, entry removed from database|
 |A user clicks "Update" on button for stylist or client| Click "Update" next to stylist name "Bobby Brows", update to "Betsy Brows"| Stylist page reloads with updated "Betsy Brows" name listed|
+|A user clicks "Delete All" button on stylists or clients page| Click "Delete All" button|All clients list or all stylists list cleared and removed from database|
 
 ## MySQL Commands Used
 
@@ -46,6 +47,10 @@ _This web page allows a user to input a new stylist, view a list of current styl
 |"SHOW TABLES;"|Displays tables contained within selected database|
 |"SELECT * FROM stylists;"|Queries and displays all entries contained within a table|
 |"SELECT * FROM clients ORDER BY name;"|Queries and displays all entries contained within a table and orders alphabetically by column selected|
+|"INSERT INTO clients (name, phone_number, stylist_id) VALUES ("Jenny Crazy-Hair", 503-556-7890, 2);"|Enters new values into table with information in parentheses|
+|"DELETE FROM stylists;"|Removes all entries within clients table in database|
+|"DELETE FROM clients WHERE id = 2;"|Removes all entries within clients table in database with the id of 2|
+|"UPDATE clients SET name = 'Betsy Brows', phone_number = 971-234-6789 WHERE id = 1;"|Updates values for database entry with id 1 with the new values given|
 
 ## Known Bugs
 
