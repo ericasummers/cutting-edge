@@ -36,6 +36,16 @@
         {
             $this->specialty = (string) $new_specialty;
         }
+
+        function save()
+        {
+
+        }
+
+        static function getAll()
+        {
+            
+        }
     }
 
 

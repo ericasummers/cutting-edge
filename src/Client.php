@@ -43,7 +43,16 @@
         {
             $this->stylist_id = (int) $new_stylist_id;
         }
-        
+
+        function save()
+        {
+
+        }
+
+        static function getAll()
+        {
+            
+        }
     }
 
 

@@ -27,6 +27,23 @@
             $this->assertEquals($name, $result);
         }
 
+        function test_saveAndGetAll()
+        {
+            $name = "Bobby Brows";
+            $specialty = "bowl cuts";
+            $new_stylist = new Stylist($name, $specialty);
+            $new_stylist->save();
+
+            $name2 = "Pamela Perm";
+            $specialty2 = "perms and curls";
+            $new_stylist2 = new Stylist($name2, $specialty2);
+            $new_stylist2->save();
+
+            $result = Stylist::getAll();
+
+            $this->assertEquals([$new_stylist, $new_stylist2], $result);
+        }
+
     }
 
 
