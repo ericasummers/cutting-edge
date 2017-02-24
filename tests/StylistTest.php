@@ -97,6 +97,28 @@
             $this->assertEquals([$new_stylist2], Stylist::getAll());
         }
 
+        function test_findClients()
+        {
+            $name = "Bobby Brows";
+            $specialty = "bowl cuts";
+            $new_stylist = new Stylist($name, $specialty);
+            $new_stylist->save();
+
+            $name = "Jenny Crazy-Hair";
+            $phone_number = '5035567890';
+            $stylist_id = $new_stylist->getId();
+            $new_client = new Client($name, $phone_number, $stylist_id);
+            $new_client->save();
+
+            $name2 = "Max Messy";
+            $phone_number2 = '5031212121';
+            $stylist_id2 = '2';
+            $new_client2 = new Client($name2, $phone_number2, $stylist_id2);
+            $new_client2->save();
+
+            $this->assertEquals([$new_client], $new_stylist->getClients());
+        }
+
     }
 
 
