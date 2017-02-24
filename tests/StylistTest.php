@@ -49,6 +49,23 @@
             $this->assertEquals([$new_stylist, $new_stylist2], $result);
         }
 
+        function test_find()
+        {
+            $name = "Bobby Brows";
+            $specialty = "bowl cuts";
+            $new_stylist = new Stylist($name, $specialty);
+            $new_stylist->save();
+
+            $name2 = "Pamela Perm";
+            $specialty2 = "perms and curls";
+            $new_stylist2 = new Stylist($name2, $specialty2);
+            $new_stylist2->save();
+
+            $result = Stylist::find($new_stylist->getId());
+
+            $this->assertEquals($result, $new_stylist);
+        }
+
     }
 
 

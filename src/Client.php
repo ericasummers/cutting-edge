@@ -44,6 +44,11 @@
             $this->stylist_id = (int) $new_stylist_id;
         }
 
+        function getId()
+        {
+            return $this->id;
+        }
+
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO clients (name, phone_number, stylist_id) VALUES ('{$this->getName()}', {$this->getPhoneNumber()}, {$this->getStylistId()});");
@@ -68,6 +73,11 @@
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM clients;");
+        }
+
+        static function find()
+        {
+
         }
     }
 

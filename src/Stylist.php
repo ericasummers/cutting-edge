@@ -61,6 +61,11 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM stylists;");
         }
+
+        static function find()
+        {
+            
+        }
     }
 
 
