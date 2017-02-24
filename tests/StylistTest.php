@@ -66,6 +66,20 @@
             $this->assertEquals($result, $new_stylist);
         }
 
+        function test_update()
+        {
+            $name = "Bobby Brows";
+            $specialty = "bowl cuts";
+            $new_stylist = new Stylist($name, $specialty);
+            $new_stylist->save();
+
+            $new_name = "Betsy Brows";
+
+            $new_stylist->update($new_name, $specialty);
+
+            $this->assertEquals("Betsy Brows", $new_stylist->getName());
+        }
+
     }
 
 

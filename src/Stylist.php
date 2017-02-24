@@ -43,6 +43,11 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        function update()
+        {
+            
+        }
+
         static function getAll()
         {
             $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists ORDER BY name;");

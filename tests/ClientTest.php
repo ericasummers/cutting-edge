@@ -71,6 +71,21 @@
             $this->assertEquals($new_client, $result);
         }
 
+        function test_update()
+        {
+            $name = "Jenny Crazy-Hair";
+            $phone_number = '5035567890';
+            $stylist_id = '1';
+            $new_client = new Client($name, $phone_number, $stylist_id);
+            $new_client->save();
+
+            $new_name = "Jenny Wild-Hair";
+
+            $new_client->update($new_name, $phone_number, $stylist_id);
+
+            $this->assertEquals("Jenny Wild-Hair", $new_client->getName());
+        }
+
     }
 
 
