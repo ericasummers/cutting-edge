@@ -1,7 +1,23 @@
+body {
+    background-color: #444141;
+}
+
 .header-banner {
-    background-color: darkred;
+    background-color: #BB2E27;
     width: 100%;
     display: block;
     top: 0;
     padding: 2px;
+}
+
+.header-banner h1 {
+    color: #444141;
+}
+
+#home-content {
+    color: #FFFFFF;
+}
+
+#home-content h1 {
+    color: #FFFFFF;
 }
