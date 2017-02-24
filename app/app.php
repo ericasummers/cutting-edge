@@ -99,6 +99,13 @@
         return $app['twig']->render('stylist.html.twig', array('clients' => Client::getAll(), 'client' => $this_client, 'stylist' => $stylist, 'blank_form' => $blank_form));
     });
 
+    $app->get("/clients/{id}", function($id) use ($app) {
+        $this_client = Client::find($id);
+        $stylist = Stylist::find($this_client->getStylistId());
+
+        return $app['twig']->render('client.html.twig', array('client' => $this_client, 'stylist' => $stylist));
+    });
+
     return $app;
 
 ?>

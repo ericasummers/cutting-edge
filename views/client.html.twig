@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    {% include '/components/head.html.twig' %}
+    <body>
+        {% include '/components/header-banner.html.twig' %}
+
+        <div class="client-content">
+            <h1>{{ client.getName }}</h1>
+
+            <p>Styled by: {{ stylist.getName }}</p>
+            <p>Phone Number: {{ client.getPhoneNumber }}</p>
+
+            <p><a href="/stylists/{{ client.getStylistId }}"><i class="fa fa-home" aria-hidden="true"></i> Return to stylist page</a></p>
+
+            <p><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a></p>
+
+        </div>
+        {% include '/components/footer.html.twig' %}
+    </body>
+</html>
