@@ -55,6 +55,13 @@
         return $app['twig']->render('home.html.twig', array('stylists' => Stylist::getAll(), 'blank_form' => $blank_form));
     });
 
+    $app->delete("/delete-all-stylists", function() use ($app) {
+        Stylist::deleteAll();
+        Client::deleteAll();
+        $blank_form = array();
+        return $app['twig']->render('home.html.twig', array('stylists' => Stylist::getAll(), 'blank_form' => $blank_form));
+    });
+
     $app->get("/stylists/{id}", function($id) use ($app) {
         $this_stylist = Stylist::find($id);
         $blank_form = array();

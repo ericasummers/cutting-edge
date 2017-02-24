@@ -43,6 +43,11 @@
                             </li>
                         {% endfor %}
                     </ul>
+
+                    <form action="/delete-all-clients" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete all clients for this stylist</button>
+                    </form>
                 {% else %}
                     <p>This stylist has no clients yet!</p>
                 {% endif %}
