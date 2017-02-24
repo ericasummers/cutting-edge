@@ -40,7 +40,7 @@
     $app->patch("/stylists/{id}", function($id) use ($app) {
         $name = $_POST['name'];
         $specialty = $_POST['specialty'];
-        $this_stylist->find($id);
+        $this_stylist = Stylist::find($id);
         $this_stylist->update($name, $specialty);
         $blank_form = array();
 
@@ -76,6 +76,27 @@
         $this_stylist = Stylist::find($stylist_id);
 
         return $app['twig']->render('stylist.html.twig', array('stylist' => $this_stylist, 'clients' => $this_stylist->getClients(), 'blank_form' => $blank_form));
+    });
+
+    $app->patch("/clients/{id}", function($id) use ($app) {
+        $client_name = $_POST['name'];
+        $phone_number = $_POST['phone_number'];
+        $stylist_id = $_POST['stylist_id'];
+        $this_client = Client::find($id);
+        $this_client->update($client_name, $phone_number);
+        $stylist = Stylist::find($this_client->getStylistId());
+        $blank_form = array();
+
+        return $app['twig']->render('stylist.html.twig', array('clients' => Client::getAll(), 'client' => $this_client, 'stylist' => $stylist, 'blank_form' => $blank_form));
+    });
+
+    $app->delete("/clients/{id}", function($id) use ($app) {
+        $this_client = Client::find($id);
+        $this_client->delete();
+        $stylist = Stylist::find($this_client->getStylistId());
+        $blank_form = array();
+
+        return $app['twig']->render('stylist.html.twig', array('clients' => Client::getAll(), 'client' => $this_client, 'stylist' => $stylist, 'blank_form' => $blank_form));
     });
 
     return $app;
