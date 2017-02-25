@@ -49,6 +49,16 @@ input {
     width: 100%;
 }
 
+#stylist {
+    background: url('img/stylist.png');
+    background-repeat: no-repeat;
+    position: fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+}
+
 .col-lg-6 {
     background-color: rgba(68, 65, 65, 0.5);
     padding: 15px;
@@ -73,6 +83,10 @@ input {
 .bold-names {
     font-family: 'Exo 2', sans-serif;
     font-size: 20px;
+}
+
+.specialty-title {
+    font-size: 25px;
 }
 
 .inline-forms {

@@ -4,60 +4,71 @@
     <body>
         {% include '/components/header-banner.html.twig' %}
 
-        <div class="stylist-content">
-            <h1>{{ stylist.getName }}</h1>
+        <div class="stylist-content" id="stylist">
+            <div class="container">
+                <h1>{{ stylist.getName }} || <span class="specialty-title">Specialty: <em>{{ stylist.getSpecialty }}</em></span></h1>
+                <div class="row">
+                    <div class="col-lg-6">
 
-            <h2>Specialty: {{ stylist.getSpecialty }}</h2>
+                        {% if blank_form is not empty %}
+                            <p>Please enter a complete client name and phone number then resubmit!</p>
+                            <br><br>
+                            <p><a href="/stylists/{{ stylist.getId }}"><i class="fa fa-home" aria-hidden="true"></i> Return to stylist page</a></p>
+                        {% else %}
+                        <h3>Clients List</h3>
+                        {% if clients is not empty %}
+                            <ul>
+                                {% for client in clients %}
+                                    <li>
+                                        <a href="/clients/{{ client.getId }}"><span class="bold-names">{{ client.getName }}</span></a>
+                                        <div class="inline-forms">
+                                            <form action="/clients/{{ client.getId }}/edit" method="post" style="display: inline">
+                                                <button type="submit" class="btn btn-success"><i class="fa fa-pencil-square" aria-hidden="true"></i> Update</button>
+                                            </form>
+                                            <form action="/clients/{{ client.getId }}" method="post" style="display: inline">
+                                                <input type="hidden" name="_method" value="delete">
+                                                <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                            </form>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
 
-            <p>Add a client to this stylist:</p>
-            <form method="post" action="/add-client">
-                <label for="name">Client Name:</label>
-                <input type="text" name="name" placeholder="First and last name">
-                <label for="phone_number">Phone Number:</label>
-                <input type="text" name="phone_number" placeholder="Phone number">
+                            <p><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Back to Stylists List</a></p>
+                        </div>
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-5">
 
-                <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
+                            <h3>Add a client to this stylist:</h3>
+                            <form method="post" action="/add-client">
+                                <label for="name">Client Name:</label>
+                                <input type="text" name="name" placeholder="First and last name">
+                                <br><br>
+                                <label for="phone_number">Phone Number:</label>
+                                <input type="text" name="phone_number" placeholder="Phone number">
+                                <br>
+                                <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
+                                <br><br>
+                                <button class="btn btn-info" type="submit"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Client!</button>
+                            </form>
+                            <br><br>
+                            <form action="/delete-all-clients" method="post">
+                                <input type="hidden" name="_method" value="delete">
 
-                <button class="btn btn-info" type="submit"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Client!</button>
-            </form>
+                                <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
+                                <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete all clients for this stylist</button>
+                            </form>
+                            {% else %}
+                                <p>This stylist has no clients yet!</p>
+                            {% endif %}
+                        {% endif %}
 
-            <br><br>
-            {% if blank_form is not empty %}
-                <p>Please enter a complete client name and phone number then resubmit!</p>
-                <br><br>
-                <p><a href="/stylists/{{ stylist.getId }}"><i class="fa fa-home" aria-hidden="true"></i> Return to stylist page</a></p>
-            {% else %}
-
-                {% if clients is not empty %}
-                    <ul>
-                        {% for client in clients %}
-                            <li>
-                                <a href="/clients/{{ client.getId }}">{{ client.getName }}</a>
-                                <form action="/clients/{{ client.getId }}/edit" method="post">
-                                    <button type="submit" class="btn btn-success"><i class="fa fa-pencil-square" aria-hidden="true"></i> Update</button>
-                                </form>
-                                <form action="/clients/{{ client.getId }}" method="post">
-                                    <input type="hidden" name="_method" value="delete">
-                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-                                </form>
-                            </li>
-                        {% endfor %}
-                    </ul>
-
-                    <form action="/delete-all-clients" method="post">
-                        <input type="hidden" name="_method" value="delete">
-
-                        <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
-                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete all clients for this stylist</button>
-                    </form>
-                {% else %}
-                    <p>This stylist has no clients yet!</p>
-                {% endif %}
-            {% endif %}
-
-            <p><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a></p>
-
+                    </div>
+                </div>
+            </div>
         </div>
-        {% include '/components/footer.html.twig' %}
+    </div>
+    {% include '/components/footer.html.twig' %}
     </body>
 </html>
