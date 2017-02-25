@@ -45,10 +45,10 @@
                             <h3>Add a client to this stylist:</h3>
                             <form method="post" action="/add-client">
                                 <label for="name">Client Name:</label>
-                                <input type="text" name="name" placeholder="First and last name">
+                                <input type="text" name="name" placeholder="First and last name" required>
                                 <br><br>
                                 <label for="phone_number">Phone Number:</label>
-                                <input type="text" name="phone_number" placeholder="Phone number">
+                                <input type="text" name="phone_number" placeholder="Phone number" required>
                                 <br>
                                 <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
                                 <br><br>
