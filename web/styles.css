@@ -14,6 +14,19 @@ input {
     color: #000000;
 }
 
+a {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #darkred;
+}
+
+a:visited {
+    color: #FFFFFF;
+}
+
 .header-banner {
     background-color: #BB2E27;
     font-family: 'Exo 2', sans-serif;
