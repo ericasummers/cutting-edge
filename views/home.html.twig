@@ -33,6 +33,9 @@
                                     </li>
                                 {% endfor %}
                                 </ul>
+                                {% else %}
+                                    <p> There are no stylists yet! </p>
+                            {% endif %}
                     </div>
                     <div class="col-lg-1">
                     </div>
@@ -52,9 +55,6 @@
                                     <input type="hidden" name="_method" value="delete">
                                     <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete all stylists</button>
                                 </form>
-                                {% else %}
-                                    <p> There are no stylists yet! </p>
-                            {% endif %}
                         {% endif %}
                     </div>
                 </div>

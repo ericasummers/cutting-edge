@@ -34,12 +34,14 @@
                                 {% endfor %}
                             </ul>
 
-                            <p><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Back to Stylists List</a></p>
+                            {% else %}
+                                <p>This stylist has no clients yet!</p>
+                            {% endif %}
+                            <p><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Return Home</a></p>
                         </div>
                         <div class="col-lg-1">
                         </div>
                         <div class="col-lg-5">
-
                             <h3>Add a client to this stylist:</h3>
                             <form method="post" action="/add-client">
                                 <label for="name">Client Name:</label>
@@ -59,9 +61,6 @@
                                 <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
                                 <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete all clients for this stylist</button>
                             </form>
-                            {% else %}
-                                <p>This stylist has no clients yet!</p>
-                            {% endif %}
                         {% endif %}
 
                     </div>

@@ -11,6 +11,7 @@ h3 {
 
 input {
     float: right;
+    color: #000000;
 }
 
 .header-banner {
@@ -69,6 +70,16 @@ input {
     width: 100%;
 }
 
+#client-edit, #stylist-edit {
+    background: url('img/edit.png');
+    background-repeat: no-repeat;
+    position: fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+}
+
 .col-lg-6 {
     background-color: rgba(68, 65, 65, 0.5);
     padding: 15px;
@@ -111,7 +122,7 @@ input {
     margin: auto;
 }
 
-#client-panel {
+#client-panel, #client-edit-panel, #stylist-edit-panel {
     margin-top: 20px;
     background-color: rgba(149, 47, 71, 0.5);
     float: left;

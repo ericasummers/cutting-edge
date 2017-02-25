@@ -4,27 +4,33 @@
     <body>
         {% include '/components/header-banner.html.twig' %}
 
-        <div class="client-content">
-            <h1>{{ client.getName }}</h1>
+        <div class="client-content" id="client-edit">
+            <div class="container">
+                <h1>Edit Client</h1>
+                <div class="panel" id="client-edit-panel">
+                    <div class="panel-body">
+                        <h3>{{ client.getName }}</h3>
 
-            <p>Update client information:</p>
-            <form method="post" action="/clients/{{ client.getId }}">
-                <input type="hidden" name="_method" value="patch">
+                        <p>Update client information:</p>
+                        <form method="post" action="/clients/{{ client.getId }}">
+                            <input type="hidden" name="_method" value="patch">
 
-                <label for="name">Client Name:</label>
-                <input type="text" name="name" value="{{ client.getName }}" required>
-                <label for="phone_number">Phone Number:</label>
-                <input type="text" name="phone_number" value="{{ client.getPhoneNumber }}" required>
+                            <label for="name">Client Name:</label>
+                            <input type="text" name="name" value="{{ client.getName }}" required>
+                            <br><br>
+                            <label for="phone_number">Phone Number:</label>
+                            <input type="text" name="phone_number" value="{{ client.getPhoneNumber }}" required>
+                            <br><br>
+                            <button class="btn btn-info" type="submit"><i class="fa fa-plus-square" aria-hidden="true"></i> Update!</button>
+                        </form>
 
-                <button class="btn btn-info" type="submit"><i class="fa fa-plus-square" aria-hidden="true"></i> Update!</button>
-            </form>
-
-            <br><br>
-            <p><a href="/stylists/{{ client.getStylistId }}"><i class="fa fa-home" aria-hidden="true"></i> Return to stylist page</a></p>
-            <br>
-
-            <p><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a></p>
-
+                        <br>
+                        <p><a href="/stylists/{{ client.getStylistId }}"><i class="fa fa-home" aria-hidden="true"></i> Return to stylist page</a></p>
+                        <br>
+                        <p><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
         {% include '/components/footer.html.twig' %}
     </body>
